@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CmemberMapper">
+	<!-- 회원가입 -->
+	<insert id="Cregister"
+		parameterType="dagachi.dto.customer.Customer_SignUp_Dto">
+		insert into customer_signup (customer_Email
+		,customer_Name,customer_Password
+		,customer_Gender,customer_PhoneNumber
+		,customer_Birth,customer_Join_Date) values
+		(#{customer_Email},#{customer_Name},#{customer_Password}
+		,#{customer_Gender},#{customer_PhoneNumber},#{customer_Birth}
+		,#{customer_Join_Date})
+	</insert>
+
+	<!-- 로그인 -->
+	<select id="CLogin"
+		resultType="dagachi.dto.customer.Customer_Login_Dto"
+		parameterType="dagachi.dto.customer.Customer_Login_Dto">
+		select customer_Email,customer_Name from customer_signup
+		where customer_Email = #{customer_Email}
+		and customer_Password = #{customer_Password}
+	</select>
+	
+	<select id="findPass" parameterType="String" resultType="int">
+		select EXISTS (select * from customer_SignUp where 
+		customer_Email=#{customer_Email}) as success 
+	</select>
+	
+	<!-- <select id="CidChk" resultType="dagachi.dto.customer.CSignUpDTO"> select 
+		customer_Email from customer_signup where customer_Email = #{customer_Email} 
+		</select> -->
+
+	<!-- <select id="CpassChk" resultType="int"> select count(*) from customer_signup 
+		where customer_Email = #{customer_Email} and customer_Password = #{customer_Password} 
+		</select> -->
+</mapper>

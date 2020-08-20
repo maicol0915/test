@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="AmemberMapper">
+	<!-- 회원가입 -->
+	<insert id="Aregister"
+		parameterType="dagachi.dto.admin.Admin_SignUp_Dto">
+		insert into admin_signup(admin_Id, admin_Name, admin_Password, 
+		admin_Email, admin_PhoneNumber, dept, admin_Author) 
+		values(#{admin_Id},#{admin_Name},#{admin_Password},
+		#{admin_Email},#{admin_PhoneNumber},#{dept},#{admin_Author})
+	</insert>
+	
+	<!-- 로그인 -->
+	<select id="Alogin" resultType="dagachi.dto.admin.Admin_Login_Dto" 
+	parameterType="dagachi.dto.admin.Admin_Login_Dto">
+	select admin_Id,admin_Name from admin_signup 
+	where admin_Id = #{admin_Id} 
+	and admin_Password = #{admin_Password}
+	</select>
+	
+	<!-- 
+	<select id="CidChk" resultType="dagachi.dto.customer.CSignUpDTO">
+		select customer_Email from customer_signup
+		where customer_Email = #{customer_Email}
+	</select> -->
+	
+	<!-- 
+	<select id="CpassChk" resultType="int">
+		select count(*) from customer_signup
+		where customer_Email = #{customer_Email}
+		and customer_Password = #{customer_Password}
+	</select> -->
+
+</mapper>

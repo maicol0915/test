@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd"><!-- 이설정이 빠지면 매퍼파일 인식하지 못함 -->
+
+<configuration>
+	
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL" /> <!-- 마이바티스는 null값을 허용하지 않기때문에 세팅에서 지정함, jdbc에 null값 허용 -->
+	</settings>
+	
+</configuration>
+     
+     
+     
+     
+     
+     
+     
+     
